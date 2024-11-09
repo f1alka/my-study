@@ -1,42 +1,124 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleApp2
-{
-    using System;
-
-    class KV // объявление класса KV
+namespace lab1{
+    class A
     {
-        private double a; // объявление приватного поля стороны "a"
-
-        public KV() // конструктор класса KV
+        public void UseJ(J j)
         {
-            Console.Write("Введите сторону квадрата: "); // вызов пользовательского ввода
-            a = double.Parse(Console.ReadLine()); // считывание введенной пользователем стороны квадрата и присваивание ее значению стороны "a"
+            Console.WriteLine("A использует J");
+            j.PerformAction();
         }
-
-        public double SideByFour() // метод класса KV для вычисления периметра квадрата
+    
+        public void UseC(C c)
         {
-            return 4 * a; // возвращение значения периметра
-        }
-
-        public double SideBySide() // метод класса KV для вычисления площади квадрата
-        {
-            return a * a; // возвращение значения площади
+            Console.WriteLine("A использует C");
+            c.PerformAction();
         }
     }
-    class program
+    
+    class J
+    {
+        public void UseK(K k)
+        {
+            Console.WriteLine("J использует K");
+            k.PerformAction();
+        }
+    
+        public void UseD(D d)
+        {
+            Console.WriteLine("J использует D");
+            d.PerformAction();
+        }
+    
+        public void PerformAction()
+        {
+            Console.WriteLine("J выполняет действие");
+        }
+    }
+    
+    class K
+    {
+        public void PerformAction()
+        {
+            Console.WriteLine("K выполняет действие");
+        }
+    }
+    
+    class D
+    {
+        public void PerformAction()
+        {
+            Console.WriteLine("D выполняет действие");
+        }
+    }
+    
+    class C
+    {
+        public void UseD(D d)
+        {
+            Console.WriteLine("C использует D");
+            d.PerformAction();
+        }
+    
+        public void UseE(E e)
+        {
+            Console.WriteLine("C использует E");
+            e.PerformAction();
+        }
+    
+        public void UseF(F f)
+        {
+            Console.WriteLine("C использует F");
+            f.PerformAction();
+        }
+    
+        public void PerformAction()
+        {
+            Console.WriteLine("C выполняет действие");
+        }
+    }
+    
+    class E
+    {
+        public void PerformAction()
+        {
+            Console.WriteLine("E выполняет действие");
+        }
+    }
+    
+    class F
+    {
+        public void PerformAction()
+        {
+            Console.WriteLine("F выполняет действие");
+        }
+    }
+    
+    class Program
     {
         static void Main(string[] args)
         {
-            KV kvadrat = new KV(); // создание экземпляра класса KV и вызов конструктора
-            Console.WriteLine("Периметр == " + kvadrat.SideByFour()); // вывод конечного значения периметра квадрата, просчтанного с помощью метода методом SideByFour()
-            Console.WriteLine("Площадь == " + kvadrat.SideBySide()); // вывод конечного значения площади квадрата, просчитанного с помощью SideBySide()
-
+            // Создаем объекты классов
+            A a = new A();
+            J j = new J();
+            K k = new K();
+            D d = new D();
+            C c = new C();
+            E e = new E();
+            F f = new F();
+    
+            // Демонстрация использования
+            a.UseJ(j);
+            a.UseC(c);
+    
+            j.UseK(k);
+            j.UseD(d);
+    
+            c.UseD(d);
+            c.UseE(e);
+            c.UseF(f);
+    
         }
- }
-
+    }
 }
